@@ -1,0 +1,6 @@
+[gd_resource type="DynamicFontData" format=2]
+
+[resource]
+resource_name = "adobedia"
+antialiased = false
+font_path = "res://assets/Adobe Dia.ttf"
