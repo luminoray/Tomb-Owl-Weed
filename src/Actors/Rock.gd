@@ -1,3 +1,3 @@
 extends StaticBody2D
 
-export var cooldown: = 0.25
+export var cooldown: = 0.5

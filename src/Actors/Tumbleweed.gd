@@ -5,8 +5,8 @@ onready var diameter = sprite.texture.get_size().x
 onready var start = position.x
 onready var counter = get_parent().get_parent().get_node('UI/Control/Label')
 
-export var velocity: = Vector2.ZERO
-export var base_gravity: = 320.0
+export var velocity: = Vector2(0, -1)
+export var base_gravity: = 640.0
 export var jumps: = 2
 export var jump_power: = 200
 export var gliding_factor: = 0.15
@@ -17,9 +17,9 @@ var score = 0
 var on_floor
 var can_jump = jumps
 var jump_buffer: = 0.0
-var can_glide = true
+var can_glide = false
 var gliding = false
-var gravity = base_gravity
+var gravity: = base_gravity
 
 func _process(_delta: float) -> void:
 	counter.text = str(floor(score))
@@ -80,13 +80,14 @@ func jump() -> void:
 
 func process_collisions() -> void:
 	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		
-		can_jump = jumps
-		can_glide = false
-		gliding = false
-		on_floor = true
-		if rand_range(0, 1) < 0.5 * get_process_delta_time():
-			velocity.y = -60
+		land()
+		if rand_range(0, 1) < 1 * get_process_delta_time():
+			velocity.y = -30
 				
 	
+
+func land() -> void:
+	can_jump = jumps
+	can_glide = false
+	gliding = false
+	on_floor = true
