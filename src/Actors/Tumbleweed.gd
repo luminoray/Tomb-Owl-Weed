@@ -20,31 +20,33 @@ var jump_buffer: = 0.0
 var can_glide = false
 var gliding = false
 var gravity: = base_gravity
+var gameover = false
 
 func _process(_delta: float) -> void:
 	counter.text = str(floor(score))
 
 func _physics_process(delta: float) -> void:
-	sprite.rotation_degrees += (velocity.x / (diameter * PI)) * (360 * delta) * (.5 if ! on_floor else 1.0) * (.25 if gliding else 1.0)
-	velocity.y += gravity * delta * (gliding_factor if gliding else 1.0)
-	
-	process_input()
-	process_buffers()
-	
-	new_velocity = move_and_slide(velocity)
-	
-	velocity.y = new_velocity.y
-	
-	score += velocity.x * delta * 0.1
-
-	if (position.x > start + diameter):
-		position.x -= diameter
-		for actor in get_parent().get_node('Obstacles').get_children():
-			actor.position.x -= diameter
+	if gameover == false:
+		sprite.rotation_degrees += (velocity.x / (diameter * PI)) * (360 * delta) * (.5 if ! on_floor else 1.0) * (.25 if gliding else 1.0)
+		velocity.y += gravity * delta * (gliding_factor if gliding else 1.0)
 		
-	on_floor = false
+		process_input()
+		process_buffers()
+		
+		new_velocity = move_and_slide(velocity)
+		
+		velocity.y = new_velocity.y
+		
+		score += velocity.x * delta * 0.1
 	
-	process_collisions()
+		if (position.x > start + diameter):
+			position.x -= diameter
+			for actor in get_parent().get_node('Obstacles').get_children():
+				actor.position.x -= diameter
+			
+		on_floor = false
+		
+		process_collisions()
 
 
 func process_input() -> void:

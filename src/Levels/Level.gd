@@ -26,9 +26,10 @@ var cooldown: = 1.0
 var overlaid_cooldown: = 1.0
 var scene
 
-func _process(delta: float) -> void:
-	random_spawn_actor()
-	random_spawn_overlaid_actor()
+func _process(_delta: float) -> void:
+	if get_node("Actors/Tumbleweed").gameover == false:
+		random_spawn_actor()
+		random_spawn_overlaid_actor()
 
 
 func random_spawn_actor():
