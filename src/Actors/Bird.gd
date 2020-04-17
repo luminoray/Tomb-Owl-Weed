@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var cooldown: = 0.4
+export var cooldown: = 1
 
 var velocity: = Vector2(-64, rand_range(-15, 10))
 

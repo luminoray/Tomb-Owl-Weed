@@ -4,6 +4,7 @@ onready var sprite = $tumbleweed
 onready var diameter = sprite.texture.get_size().x
 onready var start = position.x
 onready var counter = get_parent().get_parent().get_node('UI/Control/Label')
+onready var plant = get_parent().get_node("Plant")
 
 export var velocity: = Vector2(0, -1)
 export var base_gravity: = 640.0
@@ -12,6 +13,7 @@ export var jump_power: = 200
 export var gliding_factor: = 0.15
 export var action_buffer: = 0.1
 
+var start_pos
 var new_velocity
 var score = 0
 var on_floor
@@ -22,11 +24,16 @@ var gliding = false
 var gravity: = base_gravity
 var gameover = false
 
+func _ready() -> void:
+	 start_pos = position.y
+
+
 func _process(_delta: float) -> void:
 	counter.text = str(floor(score))
+	
 
 func _physics_process(delta: float) -> void:
-	if gameover == false:
+	if gameover == false and visible == true:
 		sprite.rotation_degrees += (velocity.x / (diameter * PI)) * (360 * delta) * (.5 if ! on_floor else 1.0) * (.25 if gliding else 1.0)
 		velocity.y += gravity * delta * (gliding_factor if gliding else 1.0)
 		
@@ -40,6 +47,7 @@ func _physics_process(delta: float) -> void:
 		score += velocity.x * delta * 0.1
 	
 		if (position.x > start + diameter):
+			plant.position.x -= diameter
 			position.x -= diameter
 			for actor in get_parent().get_node('Obstacles').get_children():
 				actor.position.x -= diameter
@@ -51,7 +59,10 @@ func _physics_process(delta: float) -> void:
 
 func process_input() -> void:
 	if Input.is_action_just_pressed('jump'):
-		if can_jump > 0:
+		if position.y >= get_viewport_rect().size.y - 64:
+			land()
+			jump()
+		elif can_jump > 0:
 			jump()
 		else:
 			jump_buffer = action_buffer
@@ -63,6 +74,12 @@ func process_input() -> void:
 	
 	if Input.is_action_just_released('glide'):
 		gliding = false
+		
+	if Input.is_action_just_pressed("seed"):
+		plant.visible = true
+		plant.position.x = position.x
+		plant.score = score
+		plant.get_node("AnimationPlayer").play()
 
 
 func process_buffers() -> void:

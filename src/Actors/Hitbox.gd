@@ -5,4 +5,6 @@ class_name Hitbox
 
 func overlap_tumbleweed(_body):
 	_body.gameover = true
-	get_tree().get_current_scene().get_node("GameOver/MarginContainer").show()
+	var scene = get_tree().get_current_scene()
+	scene.get_node("GameOver/MarginContainer").show()
+	scene.get_node("Shader/ColorRect").hide()

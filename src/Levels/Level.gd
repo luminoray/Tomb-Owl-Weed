@@ -22,12 +22,15 @@ var overlaid_actors = [
 	}
 ]
 
+onready var weed = get_node("Actors/Tumbleweed")
+
 var cooldown: = 1.0
 var overlaid_cooldown: = 1.0
 var scene
 
+
 func _process(_delta: float) -> void:
-	if get_node("Actors/Tumbleweed").gameover == false:
+	if weed.gameover == false and weed.visible == true:
 		random_spawn_actor()
 		random_spawn_overlaid_actor()
 

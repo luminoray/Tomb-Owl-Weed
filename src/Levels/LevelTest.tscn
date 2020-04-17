@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/terrain.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Tumbleweed.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/UI/GameOver.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Levels/Obstacles.gd" type="Script" id=6]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=7]
+[ext_resource path="res://src/Actors/Plant.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -34,8 +35,10 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 3
+
 [node name="Level" type="Node2D"]
-modulate = Color( 1, 0.992157, 0.866667, 1 )
 script = ExtResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -46,7 +49,11 @@ tile_data = PoolIntArray( 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0
 
 [node name="Actors" type="Node2D" parent="."]
 
+[node name="Plant" parent="Actors" instance=ExtResource( 8 )]
+position = Vector2( 96, 288 )
+
 [node name="Tumbleweed" parent="Actors" instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 96, 271 )
 velocity = Vector2( 200, 0 )
 gliding_factor = 0.5
@@ -62,6 +69,17 @@ offset = Vector2( 10, 0 )
 transform = Transform2D( 1, 0, 0, 1, 10, 0 )
 
 [node name="dunes" type="Sprite" parent="UI"]
-modulate = Color( 1, 0.992157, 0.866667, 1 )
 position = Vector2( 208, 261 )
 texture = ExtResource( 4 )
+
+[node name="Shader" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource( 3 )
+margin_right = 400.0
+margin_bottom = 320.0
+color = Color( 1, 0.992157, 0.866667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

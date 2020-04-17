@@ -24,7 +24,6 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
-modulate = Color( 1, 0.992157, 0.866667, 1 )
 margin_right = 300.0
 margin_bottom = 220.0
 color = Color( 0.6, 0.6, 0.6, 1 )
