@@ -3,7 +3,9 @@ extends KinematicBody2D
 onready var sprite = $tumbleweed
 onready var diameter = sprite.texture.get_size().x
 onready var start = position.x
-onready var counter = get_parent().get_parent().get_node('UI/Control/Label')
+onready var counter = get_parent().get_parent().get_node("UI/Control/Label")
+onready var seed_counter = get_parent().get_parent().get_node("UI/Control/LabelSeed")
+onready var seed_icon = get_parent().get_parent().get_node("UI/Control/Seed")
 onready var plant = get_parent().get_node("Plant")
 
 export var velocity: = Vector2(0, -1)
@@ -12,6 +14,8 @@ export var jumps: = 2
 export var jump_power: = 200
 export var gliding_factor: = 0.15
 export var action_buffer: = 0.1
+
+const MAX_SEEDS = 10
 
 var start_pos
 var new_velocity
@@ -23,6 +27,8 @@ var can_glide = false
 var gliding = false
 var gravity: = base_gravity
 var gameover = false
+var seeds: = 5
+
 
 func _ready() -> void:
 	 start_pos = position.y
@@ -30,6 +36,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	counter.text = str(floor(score))
+	seed_counter.text = str(seeds) + " / " + str(MAX_SEEDS)
+	if seeds < 5:
+		seed_icon.frame = 1
+	else:
+		seed_icon.frame = 0
 	
 
 func _physics_process(delta: float) -> void:
@@ -76,10 +87,12 @@ func process_input() -> void:
 		gliding = false
 		
 	if Input.is_action_just_pressed("seed"):
-		plant.visible = true
-		plant.position.x = position.x
-		plant.score = score
-		plant.get_node("AnimationPlayer").play()
+		if seeds >= 5:
+			plant.visible = true
+			plant.position.x = position.x
+			plant.score = score
+			plant.get_node("AnimationPlayer").play()
+			seeds -= 5
 
 
 func process_buffers() -> void:

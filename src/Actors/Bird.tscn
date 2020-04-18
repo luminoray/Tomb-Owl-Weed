@@ -54,8 +54,10 @@ tracks/2/keys = {
 script = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
+position = Vector2( 0, 4 )
 texture = ExtResource( 4 )
 hframes = 2
+frame = 1
 
 [node name="Hitbox" type="Area2D" parent="."]
 script = ExtResource( 3 )

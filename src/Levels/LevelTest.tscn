@@ -65,8 +65,6 @@ script = ExtResource( 6 )
 
 [node name="UI" parent="." instance=ExtResource( 3 )]
 layer = -1
-offset = Vector2( 10, 0 )
-transform = Transform2D( 1, 0, 0, 1, 10, 0 )
 
 [node name="dunes" type="Sprite" parent="UI"]
 position = Vector2( 208, 261 )

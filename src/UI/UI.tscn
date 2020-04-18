@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Adobe Dia.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/seed.png" type="Texture" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -16,11 +17,29 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Control"]
-margin_right = 192.0
-margin_bottom = 16.0
+margin_left = 307.0
+margin_right = 393.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.2, 0.2, 0.2, 1 )
 text = "0"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LabelSeed" type="Label" parent="Control"]
+margin_left = 29.0
+margin_right = 115.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.2, 0.2, 0.2, 1 )
+text = "0 / 10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Seed" type="Sprite" parent="Control"]
+position = Vector2( 15, 17 )
+texture = ExtResource( 2 )
+hframes = 2

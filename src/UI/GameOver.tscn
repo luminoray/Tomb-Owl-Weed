@@ -1,11 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Adobe Dia.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://src/UI/Exit.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/GameOverButton.tres" type="StyleBox" id=3]
 [ext_resource path="res://src/UI/Continue.gd" type="Script" id=4]
 
+[sub_resource type="DynamicFont" id=1]
+size = 39
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=2]
+size = 19
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 21
 font_data = ExtResource( 1 )
 
@@ -28,6 +36,34 @@ margin_right = 300.0
 margin_bottom = 220.0
 color = Color( 0.6, 0.6, 0.6, 1 )
 
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect"]
+margin_left = 57.0
+margin_top = 47.0
+margin_right = 243.0
+margin_bottom = 133.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/ColorRect/VBoxContainer"]
+margin_top = 10.0
+margin_right = 186.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.2, 0.2, 0.2, 1 )
+text = "GAME OVER"
+align = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/ColorRect/VBoxContainer"]
+margin_top = 55.0
+margin_right = 186.0
+margin_bottom = 75.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.2, 0.2, 0.2, 1 )
+text = "This tumbleweed has settled."
+align = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ColorRect"]
 margin_left = 80.0
 margin_top = 150.0
@@ -46,7 +82,7 @@ custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
 custom_styles/focus = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 0.8, 0.8, 0.8, 1 )
 custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
 custom_colors/font_color_hover = Color( 0.8, 0.8, 0.8, 1 )
@@ -64,7 +100,7 @@ custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
 custom_styles/focus = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 0.8, 0.8, 0.8, 1 )
 custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
 custom_colors/font_color_hover = Color( 0.8, 0.8, 0.8, 1 )

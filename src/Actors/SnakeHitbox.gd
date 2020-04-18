@@ -2,7 +2,7 @@ extends Hitbox
 
 
 func overlap_tumbleweed(_body):
-	_body.velocity.y = -600
+	_body.velocity.y = -550
 	_body.can_jump = 1
 	_body.can_glide = 1
 	_body.gliding = false

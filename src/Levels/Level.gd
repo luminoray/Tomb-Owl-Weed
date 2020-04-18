@@ -6,19 +6,23 @@ var actors = [
 		"resource": load("res://src/Actors/Cactus.tscn")
 	},
 	{
-		"chance": 0.4, 
+		"chance": 0.35, 
 		"resource": load("res://src/Actors/Rock.tscn")
 	},
 	{
-		"chance": 0.1, 
+		"chance": 0.15, 
 		"resource": load("res://src/Actors/Snake.tscn")
 	}
 ]
 
 var overlaid_actors = [
 	{
-		"chance": 1, 
+		"chance": 0.85, 
 		"resource": load("res://src/Actors/Bird.tscn")
+	},
+	{
+		"chance": 0.15, 
+		"resource": load("res://src/Actors/Seed.tscn")
 	}
 ]
 
