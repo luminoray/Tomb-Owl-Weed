@@ -19,7 +19,7 @@ const MAX_SEEDS = 10
 
 var start_pos
 var new_velocity
-var score = 0
+var score = 0.0
 var on_floor
 var can_jump = jumps
 var jump_buffer: = 0.0

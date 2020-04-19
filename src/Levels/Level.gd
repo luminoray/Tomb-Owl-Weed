@@ -31,12 +31,15 @@ onready var weed = get_node("Actors/Tumbleweed")
 var cooldown: = 1.0
 var overlaid_cooldown: = 1.0
 var scene
-
+var day_cycle = 0
+var enviro_cycle = 0
 
 func _process(_delta: float) -> void:
 	if weed.gameover == false and weed.visible == true:
 		random_spawn_actor()
 		random_spawn_overlaid_actor()
+	if weed.gameover == false:
+		process_ambience()
 
 
 func random_spawn_actor():
@@ -73,3 +76,26 @@ func random_spawn_overlaid_actor():
 			overlaid_cooldown = scene.cooldown
 		
 	overlaid_cooldown -= get_process_delta_time()
+
+func process_ambience():
+	day_cycle = floor((int(get_node("Actors/Tumbleweed").score) % 1000) / 100)
+	if day_cycle == 0:
+		get_node("Shader/ColorRect").color = Color(1, 1, 0.87, 1)
+	elif day_cycle == 4 or day_cycle == 9:
+		get_node("Shader/ColorRect").color = Color(0.9, 0.9, 0.83, 1)
+	elif day_cycle == 5:
+		get_node("Shader/ColorRect").color = Color(0.85, 0.85, 0.9, 1)
+		
+	enviro_cycle = floor((int(get_node("Actors/Tumbleweed").score) % 3000) / 1000)
+	if enviro_cycle == 0:
+		get_node("UI/pyramid").visible = true
+		get_node("UI/dunes").visible = false
+		get_node("UI/city").visible = false
+	elif enviro_cycle == 1:
+		get_node("UI/pyramid").visible = false
+		get_node("UI/dunes").visible = true
+		get_node("UI/city").visible = false
+	elif enviro_cycle == 2:
+		get_node("UI/pyramid").visible = false
+		get_node("UI/dunes").visible = false
+		get_node("UI/city").visible = true
