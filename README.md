@@ -29,7 +29,7 @@ Assets created specifically for this game.
 
 LuminoRay - Programmer, Art
 
-VanillaLucia - Music
+VanillaLucia [[Souncloud](https://soundcloud.com/vanillalucia)][[Youtube](https://www.youtube.com/user/ciellunatsuki)][[Website](http://vanillaspectrum.byethost14.com/wordpress/)] - Music
 
 ## Asset Packs
 
