@@ -34,6 +34,10 @@ var scene
 var day_cycle = 0
 var enviro_cycle = 0
 
+func _ready() -> void:
+	get_node("AudioStreamPlayer2D").play()
+
+
 func _process(_delta: float) -> void:
 	if weed.gameover == false and weed.visible == true:
 		random_spawn_actor()
