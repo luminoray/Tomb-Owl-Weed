@@ -4,6 +4,8 @@ class_name Hitbox
 
 
 func overlap_tumbleweed(_body):
+	if ! _body.gameover:
+		_body.get_node("LandPlayer2D").play()
 	_body.gameover = true
 	var scene = get_tree().get_current_scene()
 	scene.get_node("GameOver/MarginContainer").show()

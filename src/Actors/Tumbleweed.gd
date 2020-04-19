@@ -108,6 +108,7 @@ func jump() -> void:
 	can_glide = true
 	gliding = false
 	gravity = base_gravity
+	get_node("JumpPlayer2D").play()
 
 
 func process_collisions() -> void:
@@ -119,6 +120,8 @@ func process_collisions() -> void:
 	
 
 func land() -> void:
+	if can_jump < jumps:
+		get_node("LandPlayer2D").play()
 	can_jump = jumps
 	can_glide = false
 	gliding = false
