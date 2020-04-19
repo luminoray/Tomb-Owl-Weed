@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/terrain.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Tumbleweed.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/Actors/Plant.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/pyramid.png" type="Texture" id=9]
 [ext_resource path="res://assets/city.png" type="Texture" id=10]
+[ext_resource path="res://assets/owl.png" type="Texture" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -62,6 +63,12 @@ gliding_factor = 0.5
 
 [node name="Obstacles" type="Node2D" parent="Actors"]
 script = ExtResource( 6 )
+
+[node name="owl" type="Sprite" parent="Actors/Obstacles"]
+position = Vector2( 72, 272 )
+texture = ExtResource( 11 )
+
+[node name="Hitbox" type="Area2D" parent="Actors/Obstacles/owl"]
 
 [node name="GameOver" parent="." instance=ExtResource( 5 )]
 

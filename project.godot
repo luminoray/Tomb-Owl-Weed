@@ -21,8 +21,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Tomb Owl Weed"
-run/main_scene="res://src/Levels/LevelTest.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://src/Levels/Title.tscn"
+config/icon="res://assets/owl.png"
 
 [display]
 
